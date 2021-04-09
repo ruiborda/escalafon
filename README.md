@@ -1,1 +1,2 @@
-#Escalafón
+# Escalafón
+Sistema escalafón

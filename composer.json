@@ -1,0 +1,21 @@
+{
+  "name": "ruiborda/escalafon",
+  "description": "Escalafon",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "RuiBorda",
+      "email": "bordarui@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "ruiborda/light": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "Escalafon\\": "src/"
+    }
+  }
+}

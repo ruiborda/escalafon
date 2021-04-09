@@ -1,0 +1,59 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "a8b85d77f1e858f35344cf76c001d5d7",
+    "packages": [
+        {
+            "name": "ruiborda/light",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ruiborda/Light.git",
+                "reference": "3d166b008c5cf9638516cc676fe8964be0590495"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ruiborda/Light/zipball/3d166b008c5cf9638516cc676fe8964be0590495",
+                "reference": "3d166b008c5cf9638516cc676fe8964be0590495",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Light\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "RuiBorda",
+                    "email": "bordarui@gmail.com"
+                }
+            ],
+            "description": "Web Framework",
+            "support": {
+                "issues": "https://github.com/ruiborda/Light/issues",
+                "source": "https://github.com/ruiborda/Light/tree/main"
+            },
+            "time": "2021-04-05T19:37:08+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "ruiborda/light": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}

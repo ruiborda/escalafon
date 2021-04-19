@@ -11,7 +11,9 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "ruiborda/light": "dev-main"
+    "ruiborda/light": "dev-main",
+    "ext-pdo": "*",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-4": {

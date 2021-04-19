@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>UNAJMA: Escalafón</title>
+    <title>UNAJMA: Escalafón Login</title>
     <link rel="icon" href="/logo_unajma.png">
     <?
     require __DIR__ . '/../admin-lte/style.phtml' ?>
@@ -11,24 +11,25 @@
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
+            <h1>ESACALAFÓN</h1>
             <img src="/logo_unajma.png" alt="AdminLTE Logo"
                  class="img-responsive" style="opacity: .8;width: 50px">
         </div>
         <div class="card-body">
             <p class="login-box-msg">Regístrese para iniciar su sesión</p>
 
-            <form action="/" method="post">
+            <form action="/login" method="post">
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Correo">
+                    <input type="text" name="identificacion" class="form-control" placeholder="Identificación">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
+                            <span class="fas fa-id-card-alt"></span>
                         </div>
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Contraseña">
-                    <div class="input-group-append">
+                    <input type="password" name="password" class="form-control" placeholder="Contraseña">
+                    <div class="input-gro   up-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
                         </div>
@@ -37,7 +38,7 @@
                 <div class="row">
                     <div class="col-7">
                         <div class="icheck-primary">
-                            <input type="checkbox" id="remember">
+                            <input type="checkbox" id="remember" name="recuerdame">
                             <label for="remember">
                                 Recuérdame
                             </label>
@@ -53,7 +54,7 @@
 
 
             <p class="mb-1">
-                <a href="forgot-password.html">Olvidé mi contraseña</a>
+                <a href="forgot-password">Olvidé mi contraseña</a>
             </p>
         </div>
         <!-- /.card-body -->

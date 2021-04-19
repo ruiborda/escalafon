@@ -4,7 +4,6 @@
 namespace Escalafon\Routes;
 
 
-use Escalafon\Access\Log;
 use Light\Light;
 
 class Index
@@ -12,7 +11,9 @@ class Index
     public function __construct()
     {
         $app = new Light();
-        $app->get('/', [Log::class, 'login']);
+        
+        new Access($app);
+        
         $app->start();
     }
 }

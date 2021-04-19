@@ -15,6 +15,7 @@
   ],
   "minimum-stability": "dev",
   "require": {
+    "php": "8.0.*",
     "ruiborda/light": "dev-main",
     "ext-pdo": "*",
     "ext-json": "*"

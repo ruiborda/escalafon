@@ -10,4 +10,9 @@ class View
     {
         require __DIR__ . '/../../views/access/login.phtml';
     }
+    
+    public function login_error()
+    {
+        require __DIR__ . '/../../views/access/logout.phtml';
+    }
 }

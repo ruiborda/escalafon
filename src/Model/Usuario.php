@@ -127,16 +127,16 @@ class Usuario extends MySQL implements CRUD
     /**
      * Verifica usuario donde identificacion y password coincidan en la base de datos
      *
-     * @return bool
+     * @return false|object
      */
-    public function login(): bool
+    public function login(): false|object
     {
         self::prepare("select * from usuario where identificacion=? and password=sha2(?,256)");
         self::bindParam(1, $this->identificacion);
         self::bindParam(2, $this->password);
         self::execute();
         if (boolval(self::rowCount()) == true) {
-            return true;
+            return self::fetch();
         } else {
             return false;
         }

@@ -14,10 +14,40 @@ class Controller
         $usuario = new Usuario();
         $usuario->setIdentificacion(intval($identificacion ?? false));
         $usuario->setPassword(strval($password ?? null));
-        if ($usuario->login()) {
-            echo json_encode([true, $recuerdame ?? false]);
+        $login = $usuario->login();
+        if (is_object($login)) {
+            if (($recuerdame ?? null) == "on") {
+                session_start(
+                    [
+                        'cookie_lifetime' => 86400,
+                    ]
+                );
+            } else {
+                session_start(
+                    [
+                        'cookie_lifetime' => 3600,
+                    ]
+                );
+            }
+            $_SESSION['id']                  = $login->id;
+            $_SESSION['tipo_identificacion'] = $login->tipo_identificacion;
+            $_SESSION['identificacion']      = $login->identificacion;
+            $_SESSION['nombres']             = $login->nombres;
+            $_SESSION['apellidoPaterno']     = $login->apellidoPaterno;
+            $_SESSION['apellidoMaterno']     = $login->apellidoMaterno;
+            $_SESSION['email']               = $login->email;
+            header('Location: /administrador/');
         } else {
-            echo json_encode([false, $recuerdame ?? false]);
+            header('Location:/login_error');
         }
+    }
+    
+    public function logout()
+    {
+        session_start();
+        session_destroy();
+        session_unset();
+        session_write_close();
+        header("Location: /");
     }
 }

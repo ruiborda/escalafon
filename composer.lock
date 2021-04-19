@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8b85d77f1e858f35344cf76c001d5d7",
+    "content-hash": "649e523013a85be36174b895f1b6eac5",
     "packages": [
         {
             "name": "ruiborda/light",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ruiborda/Light.git",
-                "reference": "3d166b008c5cf9638516cc676fe8964be0590495"
+                "reference": "a8cff9a87cb869e5143fd215eca0bb93821bc7bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ruiborda/Light/zipball/3d166b008c5cf9638516cc676fe8964be0590495",
-                "reference": "3d166b008c5cf9638516cc676fe8964be0590495",
+                "url": "https://api.github.com/repos/ruiborda/Light/zipball/a8cff9a87cb869e5143fd215eca0bb93821bc7bf",
+                "reference": "a8cff9a87cb869e5143fd215eca0bb93821bc7bf",
                 "shasum": ""
             },
             "default-branch": true,
@@ -42,7 +42,7 @@
                 "issues": "https://github.com/ruiborda/Light/issues",
                 "source": "https://github.com/ruiborda/Light/tree/main"
             },
-            "time": "2021-04-05T19:37:08+00:00"
+            "time": "2021-04-11T00:01:21+00:00"
         }
     ],
     "packages-dev": [],
@@ -53,7 +53,11 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "8.0.*",
+        "ext-pdo": "*",
+        "ext-json": "*"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
 }

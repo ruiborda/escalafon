@@ -3,7 +3,6 @@
 
 namespace Escalafon\Access\Log;
 
-
 use Escalafon\Model\Usuario;
 
 class Controller
@@ -36,6 +35,7 @@ class Controller
             $_SESSION['apellidoPaterno']     = $login->apellidoPaterno;
             $_SESSION['apellidoMaterno']     = $login->apellidoMaterno;
             $_SESSION['email']               = $login->email;
+            $_SESSION['privilegio']          = Privilegio::ADMINISTRADOR;
             header('Location: /administrador');
         } else {
             header('Location:/login_error');
@@ -49,5 +49,16 @@ class Controller
         session_unset();
         session_write_close();
         header("Location: /");
+    }
+    
+    public function check_log(int $privilegio)
+    {
+        session_start();
+        if (($_SESSION["privilegio"] ?? 0) === $privilegio) {
+            return;
+        } else {
+            header('Location: /');
+            exit('Unauthorized');
+        }
     }
 }

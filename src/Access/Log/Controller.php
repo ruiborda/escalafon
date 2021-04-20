@@ -7,6 +7,17 @@ use Escalafon\Model\Usuario;
 
 class Controller
 {
+    public static function check_log(int $privilegio)
+    {
+        session_start();
+        if (($_SESSION["privilegio"] ?? 0) === $privilegio) {
+            return;
+        } else {
+            header('Location: /');
+            exit('Unauthorized');
+        }
+    }
+    
     public function login()
     {
         extract($_POST);
@@ -49,16 +60,5 @@ class Controller
         session_unset();
         session_write_close();
         header("Location: /");
-    }
-    
-    public function check_log(int $privilegio)
-    {
-        session_start();
-        if (($_SESSION["privilegio"] ?? 0) === $privilegio) {
-            return;
-        } else {
-            header('Location: /');
-            exit('Unauthorized');
-        }
     }
 }

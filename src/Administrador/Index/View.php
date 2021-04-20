@@ -12,7 +12,7 @@ class View
     public function __construct()
     {
         $access = new Controller();
-        $access->check_log(Privilegio::ADMINISTRADOR);
+        $access::check_log(Privilegio::ADMINISTRADOR);
     }
     
     public function index()

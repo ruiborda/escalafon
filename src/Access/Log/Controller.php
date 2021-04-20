@@ -36,7 +36,7 @@ class Controller
             $_SESSION['apellidoPaterno']     = $login->apellidoPaterno;
             $_SESSION['apellidoMaterno']     = $login->apellidoMaterno;
             $_SESSION['email']               = $login->email;
-            header('Location: /administrador/');
+            header('Location: /administrador');
         } else {
             header('Location:/login_error');
         }

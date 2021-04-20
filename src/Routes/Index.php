@@ -14,6 +14,8 @@ class Index
         
         new Access($app);
         
+        new Administrador($app);
+        
         $app->start();
     }
 }

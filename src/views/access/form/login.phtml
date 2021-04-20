@@ -1,33 +1,60 @@
-<form action="/login" method="post">
-    <div class="input-group mb-3">
-        <input type="text" name="identificacion" class="form-control" placeholder="Identificación">
-        <div class="input-group-append">
-            <div class="input-group-text">
-                <span class="fas fa-id-card-alt"></span>
+<?
+
+if (isset($_SESSION['id'])): ?>
+    <div class="card">
+        <div class="card-body">
+            <div class="media">
+                <img src="https://cdn.jsdelivr.net/npm/admin-lte@3.1.0/dist/img/user1-128x128.jpg" alt="User Avatar"
+                     class="img-size-50 mr-3 img-circle">
+                <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                        <?= $_SESSION['nombres'] ?? null ?> <?= $_SESSION['apellidoPaterno'] ?? null ?> <?= $_SESSION['apellidoMaterno'] ??
+                        null ?>
+                        <span class="float-right text-sm"><i class="fas fa-user-circle"></i></span>
+                    </h3>
+                    <p class="text-sm text-muted"><i class="far fa-user mr-1"></i> ADMINISTRADOR</p>
+                </div>
             </div>
+            <h5 class="card-title">Ya inició sesión como <?= $_SESSION['nombres'] ?? null ?></h5>
+            <p class="card-text">Si desea salir por favor click en el siguiente botón:</p>
+            <a href="/logout" class="btn btn-warning">Deseo salir</a>
+            <a href="/administrador" class="btn btn-success">Ir a mi cuenta</a>
         </div>
     </div>
-    <div class="input-group mb-3">
-        <input type="password" name="password" class="form-control" placeholder="Contraseña">
-        <div class="input-group-append">
-            <div class="input-group-text">
-                <span class="fas fa-lock"></span>
+<?
+else: ?>
+    <form action="/login" method="post">
+        <div class="input-group mb-3">
+            <input type="text" name="identificacion" class="form-control" placeholder="Identificación">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-id-card-alt"></span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-7">
-            <div class="icheck-primary">
-                <input type="checkbox" id="remember" name="recuerdame">
-                <label for="remember">
-                    Recuérdame
-                </label>
+        <div class="input-group mb-3">
+            <input type="password" name="password" class="form-control" placeholder="Contraseña">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
             </div>
         </div>
-        <!-- /.col -->
-        <div class="col-5">
-            <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+        <div class="row">
+            <div class="col-7">
+                <div class="icheck-primary">
+                    <input type="checkbox" id="remember" name="recuerdame">
+                    <label for="remember">
+                        Recuérdame
+                    </label>
+                </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-5">
+                <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+            </div>
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
-    </div>
-</form>
+    </form>
+<?
+endif; ?>

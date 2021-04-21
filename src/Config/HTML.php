@@ -8,7 +8,9 @@ trait HTML
 {
     public static $DASHBOARD = 0;
     public static $USUARIO   = 1;
+    
     public static $dafault_link_icon = '<i class="far fa-circle nav-icon"></i>';
+    
     public        $nav
         = [
             [
@@ -32,14 +34,22 @@ trait HTML
             ]
         ];
     public string $title;
-    public string $h1;
-    public string $link;
-    public string $class_name;
+    
+    public array $buttons = [];
     
     public function active(int $menu, int $index)
     {
         $this->nav[$menu]['active']                 = 'active';
         $this->nav[$menu]['menu_open']              = 'menu-open';
         $this->nav[$menu]['menu'][$index]['active'] = 'active';
+    }
+    
+    public function addButton(string $name, string $class, string $icon = null)
+    {
+        $this->buttons[] = [
+            'name'  => $name,
+            'class' => $class,
+            'icon'  => $icon,
+        ];
     }
 }

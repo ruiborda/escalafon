@@ -19,7 +19,12 @@ class View
     
     public function index()
     {
-        $this->title='Usuarios';
+        $this->title = 'Usuarios';
+        self::addButton(
+            'Nuevo Usuario',
+            'btn-primary btn-sm',
+            '<i class="fas fa-plus"></i>'
+        );
         self::active(self::$USUARIO, Method::usuarios);
         require __DIR__ . '/../../views/administrador/usuario/index.phtml';
     }

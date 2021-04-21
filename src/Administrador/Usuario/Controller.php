@@ -9,6 +9,7 @@ use Escalafon\Access\Log\Privilegio;
 use Escalafon\Libraries\Header;
 use Escalafon\Libraries\MySQL;
 use Escalafon\Libraries\SSP;
+use Escalafon\Model\Usuario;
 
 class Controller
 {
@@ -73,6 +74,20 @@ class Controller
     
     public function create()
     {
-        var_dump($_POST);
+        extract($_POST);
+        $usuario = new Usuario();
+        $usuario->setTipoIdentificacion(intval($tipo_identificacion ?? 1));
+        $usuario->setIdentificacion(intval($identificacion ?? false));
+        $usuario->setNombres($nombres ?? null);
+        $usuario->setApellidoPaterno($apellidoPaterno ?? null);
+        $usuario->setApellidoMaterno($apellidoMaterno ?? null);
+        $usuario->setEmail($email ?? null);
+        $usuario->setPassword($password ?? null);
+        if ($usuario->create()) {
+            $stmt = $usuario->getDbh();
+            self::location('/administrador/usuario/edit/' . $stmt->lastInsertId());
+        } else {
+            echo "ocurrio un error";
+        }
     }
 }

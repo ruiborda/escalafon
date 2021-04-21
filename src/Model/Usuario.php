@@ -86,7 +86,17 @@ class Usuario extends MySQL implements CRUD
      */
     public function create(): bool
     {
-        // TODO: Implement create() method.
+        self::prepare(
+            'insert into usuario(tipo_identificacion, identificacion, nombres, apellidopaterno, apellidomaterno, email, password) values(?,?,?,?,?,?,sha2(?,256))'
+        );
+        self::bindParam(1, $this->tipo_identificacion);
+        self::bindParam(2, $this->identificacion);
+        self::bindParam(3, $this->nombres);
+        self::bindParam(4, $this->apellidoPaterno);
+        self::bindParam(5, $this->apellidoMaterno);
+        self::bindParam(6, $this->email);
+        self::bindParam(7, $this->password);
+        return boolval(self::execute());
     }
     
     /**

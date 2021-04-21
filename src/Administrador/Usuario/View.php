@@ -23,6 +23,7 @@ class View
         self::addButton(
             'Nuevo Usuario',
             'btn-primary btn-sm',
+            '/administrador/usuario/create',
             '<i class="fas fa-plus"></i>'
         );
         self::active(self::$USUARIO, Method::usuarios);

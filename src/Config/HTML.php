@@ -44,11 +44,12 @@ trait HTML
         $this->nav[$menu]['menu'][$index]['active'] = 'active';
     }
     
-    public function addButton(string $name, string $class, string $icon = null)
+    public function addButton(string $name, string $class, string $link, string $icon = null)
     {
         $this->buttons[] = [
             'name'  => $name,
             'class' => $class,
+            'link'  => $link,
             'icon'  => $icon,
         ];
     }

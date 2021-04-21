@@ -9,7 +9,7 @@
                     <?
                     foreach ($this->buttons as $button): ?>
                         <li class="breadcrumb-item">
-                            <a type="button" class="btn <?= $button['class'] ?>">
+                            <a href="<?= $button['link'] ?>" class="btn <?= $button['class'] ?>">
                                 <?= $button['icon'] ?>
                                 <?= $button['name'] ?>
                             </a>

@@ -34,46 +34,30 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dashboard
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="./index.html" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inicio</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Usuarios
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/administrador/usuario" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>usuarios</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inactive Page</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                <?
+                foreach ($this->nav as $nav): ?>
+                    <li class="nav-item <?= $nav['menu_open'] ?? null ?>">
+                        <div class="btn text-left nav-link <?= $nav['active'] ?? null ?>">
+                            <?= $nav['icon'] ?? null ?>
+                            <p>
+                                <?= $nav['name'] ?? null ?>
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </div>
+                        <ul class="nav nav-treeview">
+                            <? foreach ($nav['menu'] as $menu): ?>
+                                <li class="nav-item">
+                                    <a href="<?= $menu['link'] ?? null ?>" class="nav-link <?= $menu['active'] ?? null ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p><?= $menu['name'] ?? null ?></p>
+                                    </a>
+                                </li>
+                            <?
+                            endforeach; ?>
+                        </ul>
+                    </li>
+                <?
+                endforeach; ?>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

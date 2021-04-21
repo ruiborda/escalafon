@@ -35,12 +35,12 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Institucion</th>
-                                        <th>Direccion</th>
-                                        <th>UGEL</th>
-                                        <th>Distrituo</th>
-                                        <th>Turno</th>
-                                        <th>Modalidad</th>
+                                        <th>Tipo Identificación</th>
+                                        <th>Itentificación</th>
+                                        <th>Nombres</th>
+                                        <th>Apellido Pat.</th>
+                                        <th>Apellido Mat.</th>
+                                        <th>Acciones</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -64,9 +64,10 @@
 
 <?
 require __DIR__ . '/../../admin-lte/script.phtml'; ?>
-<script src="https://cdn.jsdelivr.net/npm/datatables.net@1.10.24/js/jquery.dataTables.min.js" integrity="sha256-itm1F+qFhcjfGnrv+v18AA+Fa7sA8rQIT7J0YenNH64=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/datatables.net@1.10.24/js/jquery.dataTables.min.js"
+        integrity="sha256-itm1F+qFhcjfGnrv+v18AA+Fa7sA8rQIT7J0YenNH64=" crossorigin="anonymous"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
+    document.addEventListener("DOMContentLoaded", function (event) {
         console.log("DOM fully loaded and parsed");
     });
     $(document).ready(function () {

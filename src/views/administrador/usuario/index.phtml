@@ -71,6 +71,9 @@ require __DIR__ . '/../../admin-lte/script.phtml'; ?>
     });
     $(document).ready(function () {
         $('#usuarios').DataTable({
+            "language": {
+                "url": "/datatables/config"
+            },
             "responsive": true,
             "processing": true,
             "serverSide": true,

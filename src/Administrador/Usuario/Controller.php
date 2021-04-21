@@ -47,7 +47,8 @@ class Controller
                 'db'        => 'id',
                 'dt'        => 6,
                 'formatter' => function ($id, $row) {
-                    return "<a class='btn btn-sm btn-info' href='/administrador/institucion/${id}' ><i class='fas fa-book'> Registro</i></a>";
+                    return "<a class='btn btn-sm btn-warning' href='/administrador/usuario/edit/${id}' ><i class='fas fa-edit'></i></a>"
+                        . "<a class='btn btn-sm btn-danger' href='/administrador/usuario/delete/${id}' ><i class='fas fa-user-minus'></i></a>";
                 }
             ]
         ];

@@ -12,6 +12,8 @@ class Index
     {
         $app = new Light();
         
+        new Config($app);
+        
         new Access($app);
         
         new Administrador($app);

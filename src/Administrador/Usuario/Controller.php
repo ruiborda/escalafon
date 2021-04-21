@@ -4,11 +4,11 @@
 namespace Escalafon\Administrador\Usuario;
 
 
+use Escalafon\Access\Log;
 use Escalafon\Access\Log\Privilegio;
 use Escalafon\Libraries\Header;
 use Escalafon\Libraries\MySQL;
 use Escalafon\Libraries\SSP;
-use Escalafon\Access\Log;
 
 class Controller
 {
@@ -69,5 +69,10 @@ class Controller
                 $columns
             )
         );
+    }
+    
+    public function create()
+    {
+        var_dump($_POST);
     }
 }

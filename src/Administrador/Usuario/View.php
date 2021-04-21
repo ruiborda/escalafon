@@ -29,4 +29,11 @@ class View
         self::active(self::$USUARIO, Method::usuarios);
         require __DIR__ . '/../../views/administrador/usuario/index.phtml';
     }
+    
+    public function create()
+    {
+        $this->title = 'Nuevo Usuario';
+        self::active(self::$USUARIO,Method::create);
+        require __DIR__ . '/../../views/administrador/usuario/create.phtml';
+    }
 }

@@ -17,5 +17,7 @@ class Administrador
         // usuario
         $app->get('/administrador/usuario', [Usuario\View::class, 'index']);
         $app->get('/administrador/usuario/dt_usuarios', [Usuario\Controller::class, 'dt_usuario']);
+        $app->get('/administrador/usuario/create', [Usuario\View::class, 'create']);
+        $app->post('/administrador/usuario/create', [Usuario\Controller::class, 'create']);
     }
 }

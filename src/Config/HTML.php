@@ -29,6 +29,10 @@ trait HTML
                     [
                         'name' => 'Usuarios',
                         'link' => '/administrador/usuario'
+                    ],
+                    [
+                        'name' => 'Crear Usuario',
+                        'link' => '/administrador/usuario/create'
                     ]
                 ]
             ]

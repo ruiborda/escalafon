@@ -4,13 +4,20 @@
 namespace Escalafon\Administrador\Usuario;
 
 
+use Escalafon\Access\Log\Privilegio;
 use Escalafon\Libraries\Header;
 use Escalafon\Libraries\MySQL;
 use Escalafon\Libraries\SSP;
+use Escalafon\Access\Log;
 
 class Controller
 {
     use Header;
+    
+    public function __construct()
+    {
+        Log\Controller::check_log(Privilegio::ADMINISTRADOR);
+    }
     
     public function dt_usuario()
     {

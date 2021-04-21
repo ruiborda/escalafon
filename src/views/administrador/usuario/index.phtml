@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>AdminLTE 3 | Starter</title>
     <?
+    require __DIR__ . '/../head/index.phtml';
     require __DIR__ . '/../../admin-lte/style.phtml'; ?>
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 </head>
@@ -67,11 +67,9 @@ require __DIR__ . '/../../admin-lte/script.phtml'; ?>
 <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.10.24/js/jquery.dataTables.min.js"
         integrity="sha256-itm1F+qFhcjfGnrv+v18AA+Fa7sA8rQIT7J0YenNH64=" crossorigin="anonymous"></script>
 <script>
+    let usuarios = document.getElementById('usuarios')
     document.addEventListener("DOMContentLoaded", function (event) {
-        console.log("DOM fully loaded and parsed");
-    });
-    $(document).ready(function () {
-        $('#usuarios').DataTable({
+        $(usuarios).DataTable({
             "language": {
                 "url": "/datatables/config"
             },
@@ -80,7 +78,7 @@ require __DIR__ . '/../../admin-lte/script.phtml'; ?>
             "serverSide": true,
             "ajax": "/administrador/usuario/dt_usuarios"
         });
-    });
+    })
 </script>
 </body>
 </html>

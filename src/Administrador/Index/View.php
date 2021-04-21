@@ -19,6 +19,7 @@ class View
     
     public function index()
     {
+        $this->title = 'Inicio';
         self::active(self::$DASHBOARD, Method::inicio);
         require __DIR__ . '/../../views/administrador/index.phtml';
     }

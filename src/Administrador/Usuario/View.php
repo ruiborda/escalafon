@@ -19,6 +19,7 @@ class View
     
     public function index()
     {
+        $this->title='Usuarios';
         self::active(self::$USUARIO, Method::usuarios);
         require __DIR__ . '/../../views/administrador/usuario/index.phtml';
     }

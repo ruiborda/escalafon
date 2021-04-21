@@ -45,10 +45,11 @@
                             </p>
                         </div>
                         <ul class="nav nav-treeview">
-                            <? foreach ($nav['menu'] as $menu): ?>
+                            <?
+                            foreach ($nav['menu'] as $menu): ?>
                                 <li class="nav-item">
                                     <a href="<?= $menu['link'] ?? null ?>" class="nav-link <?= $menu['active'] ?? null ?>">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <?= $menu['icon'] ?? self::$dafault_link_icon ?>
                                         <p><?= $menu['name'] ?? null ?></p>
                                     </a>
                                 </li>

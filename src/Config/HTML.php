@@ -8,7 +8,7 @@ trait HTML
 {
     public static $DASHBOARD = 0;
     public static $USUARIO   = 1;
-    
+    public static $dafault_link_icon = '<i class="far fa-circle nav-icon"></i>';
     public        $nav
         = [
             [

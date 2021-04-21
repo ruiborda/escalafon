@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Escalafon\Administrador\Index;
+namespace Escalafon\Administrador\Usuario;
 
 
 use Escalafon\Access\Log\Controller;
@@ -16,6 +16,6 @@ class View
     
     public function index()
     {
-        require __DIR__ . '/../../views/administrador/index.phtml';
+        require __DIR__ . '/../../views/administrador/usuario/index.phtml';
     }
 }

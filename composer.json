@@ -18,7 +18,15 @@
     "php": "8.0.*",
     "ruiborda/light": "dev-main",
     "ext-pdo": "*",
-    "ext-json": "*"
+    "ext-json": "*",
+    "slim/slim": "4.x-dev",
+    "slim/psr7": "dev-master",
+    "nyholm/psr7": "1.4.x-dev",
+    "nyholm/psr7-server": "dev-master",
+    "http-interop/http-factory-guzzle": "dev-master",
+    "guzzlehttp/psr7": "1.4.2",
+    "slim/http": "dev-master",
+    "laminas/laminas-diactoros": "2.6.x-dev"
   },
   "autoload": {
     "psr-4": {

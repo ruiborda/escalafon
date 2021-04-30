@@ -145,7 +145,7 @@ class Usuario extends MySQL implements CRUD
         self::bindParam(1, $this->identificacion);
         self::bindParam(2, $this->password);
         self::execute();
-        if (boolval(self::rowCount()) == true) {
+        if (((bool)self::rowCount()) == true) {
             return self::fetch();
         } else {
             return false;

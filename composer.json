@@ -26,11 +26,17 @@
     "http-interop/http-factory-guzzle": "dev-master",
     "guzzlehttp/psr7": "1.4.2",
     "slim/http": "dev-master",
-    "laminas/laminas-diactoros": "2.6.x-dev"
+    "laminas/laminas-diactoros": "2.6.x-dev",
+    "illuminate/database": "9.x-dev"
   },
   "autoload": {
     "psr-4": {
       "Escalafon\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DataBase\\": "database/"
     }
   }
 }

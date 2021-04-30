@@ -29,15 +29,13 @@ class Access
         $app->get(
             '/logout',
             function (Request $request, Response $response, $args) {
-                (new Log\Controller())->logout();
-                return $response;
+                return Log\Controller::logout($request, $response);
             }
         );
         $app->post(
             '/login',
             function (Request $request, Response $response, $args) {
-                (new Log\Controller())->login();
-                return $response;
+                return Log\Controller::login($request, $response);
             }
         );
     }

@@ -4,6 +4,8 @@
 namespace Escalafon\Access\Log;
 
 use Escalafon\Model\Usuario;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class Controller
 {
@@ -18,7 +20,7 @@ class Controller
         }
     }
     
-    public function login()
+    public static function login(Request &$req, Response &$res): Response
     {
         extract($_POST);
         $usuario = new Usuario();
@@ -47,18 +49,18 @@ class Controller
             $_SESSION['apellidoMaterno']     = $login->apellidoMaterno;
             $_SESSION['email']               = $login->email;
             $_SESSION['privilegio']          = Privilegio::ADMINISTRADOR;
-            header('Location: /administrador');
+            return $res->withHeader('Location', '/administrador')->withStatus(302);
         } else {
-            header('Location:/login_error');
+            return $res->withHeader('Location', '/login_error')->withStatus(302);
         }
     }
     
-    public function logout()
+    public static function logout(Request &$req, Response &$res): Response
     {
         session_start();
         session_destroy();
         session_unset();
         session_write_close();
-        header("Location: /");
+        return $res->withHeader('Location', '/')->withStatus(302);
     }
 }

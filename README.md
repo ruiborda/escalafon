@@ -1,6 +1,6 @@
 # Escalafón
 
-Sistema Escalafon para **UNAJMA** Universidad Nacional José María Arguedas
+Sistema Escalafon para UNAJMA Universidad Nacional José María Arguedas
 
 # Screenshots
 

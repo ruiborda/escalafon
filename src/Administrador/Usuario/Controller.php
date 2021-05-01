@@ -32,7 +32,7 @@ class Controller
                 'dt' => 0
             ],
             [
-                'db' => 'tipo_identificacion',
+                'db' => 'tipoIdentificacion',
                 'dt' => 1
             ],
             [

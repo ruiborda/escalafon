@@ -11,7 +11,7 @@ class Usuario extends Seeder
 {
     public function run()
     {
-        Manager::table('user')->insert(
+        Manager::table('usuario')->insert(
             [
                 'id'                 => 1,
                 'tipoIdentificacion' => 1,

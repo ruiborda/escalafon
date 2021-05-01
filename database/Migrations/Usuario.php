@@ -11,7 +11,7 @@ class Usuario extends Migration
     public function up(): void
     {
         Manager::schema()->create(
-            'user',
+            'usuario',
             function (Blueprint $table) {
                 $table->id();
                 $table->enum(
@@ -36,7 +36,7 @@ class Usuario extends Migration
     
     public function down(): void
     {
-        Manager::schema()->drop('user');
+        Manager::schema()->drop('usuario');
     }
     
     

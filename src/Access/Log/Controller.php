@@ -3,7 +3,8 @@
 
 namespace Escalafon\Access\Log;
 
-use Escalafon\Model\Usuario;
+use Escalafon\Config\Database;
+use Escalafon\Model\User;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -23,35 +24,42 @@ class Controller
     public static function login(Request &$req, Response &$res): Response
     {
         extract($_POST);
-        $usuario = new Usuario();
-        $usuario->setIdentificacion(intval($identificacion ?? false));
-        $usuario->setPassword(strval($password ?? null));
-        $login = $usuario->login();
-        if (is_object($login)) {
-            if (($recuerdame ?? null) == "on") {
-                session_start(
-                    [
-                        'cookie_lifetime' => 86400,
-                    ]
-                );
-            } else {
-                session_start(
-                    [
-                        'cookie_lifetime' => 3600,
-                    ]
-                );
-            }
-            $_SESSION['id']                  = $login->id;
-            $_SESSION['tipo_identificacion'] = $login->tipo_identificacion;
-            $_SESSION['identificacion']      = $login->identificacion;
-            $_SESSION['nombres']             = $login->nombres;
-            $_SESSION['apellidoPaterno']     = $login->apellidoPaterno;
-            $_SESSION['apellidoMaterno']     = $login->apellidoMaterno;
-            $_SESSION['email']               = $login->email;
-            $_SESSION['privilegio']          = Privilegio::ADMINISTRADOR;
-            return $res->withHeader('Location', '/administrador')->withStatus(302);
-        } else {
+        $identificacion = (int)($identificacion ?? false);
+        
+        Database::load();
+        $usuario = User::where('identificacion', $identificacion)->first();
+        
+        if ($usuario === null) {
             return $res->withHeader('Location', '/login_error')->withStatus(302);
+        } else {
+            $password = (string)($password ?? null);
+            $password = hash('sha256', $password);
+            if (hash_equals($usuario->password, $password)) {
+                if (($recuerdame ?? null) == "on") {
+                    session_start(
+                        [
+                            'cookie_lifetime' => 86400,
+                        ]
+                    );
+                } else {
+                    session_start(
+                        [
+                            'cookie_lifetime' => 3600,
+                        ]
+                    );
+                }
+                $_SESSION['id']                 = $usuario->id;
+                $_SESSION['tipoIdentificacion'] = $usuario->tipoIdentificacion;
+                $_SESSION['identificacion']     = $usuario->identificacion;
+                $_SESSION['nombres']            = $usuario->nombres;
+                $_SESSION['apellidoPaterno']    = $usuario->apellidoPaterno;
+                $_SESSION['apellidoMaterno']    = $usuario->apellidoMaterno;
+                $_SESSION['email']              = $usuario->email;
+                $_SESSION['privilegio']         = Privilegio::ADMINISTRADOR;
+                return $res->withHeader('Location', '/administrador')->withStatus(302);
+            } else {
+                return $res->withHeader('Location', '/login_error')->withStatus(302);
+            }
         }
     }
     

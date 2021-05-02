@@ -49,5 +49,12 @@ class Administrador
                 return $response;
             }
         );
+        $app->get(
+            '/administrador/usuario/editar/{id}',
+            function (Request $request, Response $response, $args) {
+                (new Usuario\View())->editar($args['id']);
+                return $response;
+            }
+        );
     }
 }

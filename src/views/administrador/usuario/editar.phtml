@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <?
+    require __DIR__ . '/../head/index.phtml';
+    require __DIR__ . '/../../admin-lte/style.phtml'; ?>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <?
+    require __DIR__ . '/../nav.phtml'; ?>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <?
+    require __DIR__ . '/../aside.phtml'; ?>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <?
+        require __DIR__ . '/../header.phtml'; ?>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col col-md-6">
+                        <div class="card card-outline card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">Crear Nuevo Usuario</h3>
+                            </div>
+                            <form action="/administrador/usuario/create" method="post">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="tipoIdentificacion">Tipo de Identificación</label>
+                                        <select class="custom-select form-control-border" id="tipoIdentificacion"
+                                                name="tipoIdentificacion">
+                                            <option value="DNI">DNI</option>
+                                            <option value="CARNET_DE_EXTRANJERIA">CARNET DE EXTRANJERIA</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="identificacion">Identificación</label>
+                                        <input type="number" class="form-control" id="identificacion" name="identificacion"
+                                               value="<?=$usuario->identificacion ?>" onkeyup="DNI(this.value)">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nombres">Nombres</label>
+                                        <input type="text" class="form-control" id="nombres" name="nombres"
+                                              value="<?=$usuario->nombres?>"
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellidoPaterno">Apellido Pat.</label>
+                                        <input type="text" class="form-control" id="apellidoPaterno" name="apellidoPaterno"
+                                               value="<?=$usuario->apellidoPaterno?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellidoMaterno">Apellido Mat.</label>
+                                        <input type="text" class="form-control" id="apellidoMaterno" name="apellidoMaterno"
+                                               value="<?=$usuario->apellidoMaterno?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                               value="<?=$usuario->email?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Contraseña</label>
+                                        <div class="input-group input-group-merge">
+                                            <input class="form-control"
+                                                   placeholder="Password"
+                                                   type="password"
+                                                   name="password" password/>
+                                            <div class="input-group-append"
+                                                 id="btnTogglePassword">
+                                                <span class="btn input-group-text">
+                                                    <i class="fas fa-eye" icon-password></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary w-100">Crear Usuario</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <?
+    require __DIR__ . '/../footer.phtml'; ?>
+</div>
+
+<?
+require __DIR__ . '/../../admin-lte/script.phtml'; ?>
+<script src="https://cdn.jsdelivr.net/npm/datatables.net@1.10.24/js/jquery.dataTables.min.js"
+        integrity="sha256-itm1F+qFhcjfGnrv+v18AA+Fa7sA8rQIT7J0YenNH64=" crossorigin="anonymous"></script>
+<script>
+    const btnTogglePassword = document.getElementById('btnTogglePassword')
+    const iconPassword = document.querySelector('i[icon-password]')
+    const inputPasswpord = document.querySelector('input[password]')
+    const usuario_tipoIdentificacion = '<?=$usuario->tipoIdentificacion ?>';
+    let tipoIdentificacion = document.getElementById('tipoIdentificacion')
+    let formulario_usuario = document.getElementById('formulario_usuario')
+    
+    async function DNI(dni) {
+        if (dni.length === 8) {
+            nombres = document.querySelector("input[name='nombres']")
+            apellido_paterno = document.querySelector("input[name='apellidoPaterno']")
+            apellido_materno = document.querySelector("input[name='apellidoMaterno']")
+            const response = await fetch('https://dni.optimizeperu.com/api/persons/' + dni)
+            const usuario = await response.json()
+            nombres.value = usuario.name
+            apellido_paterno.value = usuario.first_name
+            apellido_materno.value = usuario.last_name
+        }
+    }
+
+    btnTogglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = inputPasswpord.getAttribute('type') === 'password' ? 'text' :
+            'password';
+        inputPasswpord.setAttribute('type', type);
+        // toggle the eye slash icon
+        iconPassword.classList.toggle('fa-eye-slash');
+    });
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        if (usuario_tipoIdentificacion === 'DNI') {
+            tipoIdentificacion.selectedIndex = 0
+        } else if (usuario_tipoIdentificacion === 'CARNET_DE_EXTRANJERIA') {
+            tipoIdentificacion.selectedIndex = 1
+        } else {
+            tipoIdentificacion.selectedIndex = 2
+        }
+    })
+</script>
+</body>
+</html>

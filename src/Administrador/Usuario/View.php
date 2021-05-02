@@ -1,12 +1,15 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Escalafon\Administrador\Usuario;
 
 
 use Escalafon\Access\Log\Controller;
 use Escalafon\Access\Log\Privilegio;
+use Escalafon\Config\Database;
 use Escalafon\Config\HTML;
+use Escalafon\Model\User;
 
 class View
 {
@@ -33,7 +36,16 @@ class View
     public function create()
     {
         $this->title = 'Nuevo Usuario';
-        self::active(self::$USUARIO,Method::create);
+        self::active(self::$USUARIO, Method::create);
         require __DIR__ . '/../../views/administrador/usuario/create.phtml';
+    }
+    
+    public function editar(int $id)
+    {
+        Database::load();
+        $usuario = User::find($id);
+        $this->title = 'Nuevo Usuario';
+        self::active(self::$USUARIO, Method::create);
+        require __DIR__ . '/../../views/administrador/usuario/editar.phtml';
     }
 }

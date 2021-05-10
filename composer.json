@@ -16,7 +16,6 @@
   "minimum-stability": "dev",
   "require": {
     "php": "8.0.*",
-    "ruiborda/light": "dev-main",
     "ext-pdo": "*",
     "ext-json": "*",
     "slim/slim": "4.x-dev",
@@ -27,7 +26,7 @@
     "guzzlehttp/psr7": "1.4.2",
     "slim/http": "dev-master",
     "laminas/laminas-diactoros": "2.6.x-dev",
-    "illuminate/database": "9.x-dev"
+    "catfan/medoo": "dev-master"
   },
   "autoload": {
     "psr-4": {

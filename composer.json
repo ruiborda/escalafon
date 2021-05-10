@@ -7,15 +7,11 @@
     {
       "name": "RuiBorda",
       "email": "bordarui@gmail.com"
-    },
-    {
-      "name": "anaihcabezas",
-      "email": "anaihcabezazloayza@gmail.com"
     }
   ],
   "minimum-stability": "dev",
   "require": {
-    "php": "8.0.*",
+    "php": "8.*",
     "ext-pdo": "*",
     "ext-json": "*",
     "slim/slim": "4.x-dev",

@@ -1,11 +1,9 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Escalafon\Routes;
 
-use Escalafon\Access\Log;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
 
 class Access
@@ -14,29 +12,19 @@ class Access
     {
         $app->get(
             '/',
-            function (Request $request, Response $response, $args) {
-                (new Log\View())->login();
-                return $response;
-            }
+            \Escalafon\Access\View\LogIn::class
         );
         $app->get(
             '/login_error',
-            function (Request $request, Response $response, $args) {
-                (new Log\View())->login_error();
-                return $response;
-            }
+            \Escalafon\Access\View\LogInError::class
         );
         $app->get(
             '/logout',
-            function (Request $request, Response $response, $args) {
-                return Log\Controller::logout($request, $response);
-            }
+            \Escalafon\Access\Controller\LogOut::class
         );
         $app->post(
             '/login',
-            function (Request $request, Response $response, $args) {
-                return Log\Controller::login($request, $response);
-            }
+            \Escalafon\Access\Controller\login::class
         );
     }
 }

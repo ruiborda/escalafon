@@ -1,6 +1,6 @@
 <?php
 
-namespace Escalafon\Access\Log;
+namespace Escalafon\Access;
 
 interface Privilegio
 {

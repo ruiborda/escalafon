@@ -5,7 +5,7 @@ namespace Escalafon\Administrador\Index;
 
 
 use Escalafon\Access\Log\Controller;
-use Escalafon\Access\Log\Privilegio;
+use Escalafon\Access\Privilegio;
 use Escalafon\Config\HTML;
 
 class View

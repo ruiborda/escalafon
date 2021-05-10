@@ -22,7 +22,9 @@
     "guzzlehttp/psr7": "1.4.2",
     "slim/http": "dev-master",
     "laminas/laminas-diactoros": "2.6.x-dev",
-    "catfan/medoo": "dev-master"
+    "catfan/medoo": "dev-master",
+    "psr/container": "1.0.0",
+    "php-di/php-di": "dev-master"
   },
   "autoload": {
     "psr-4": {
